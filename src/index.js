@@ -1,34 +1,31 @@
-// In App.js in a new project
-
 import * as React from 'react';
-import { View, Text, Button } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-
-function HomeScreen({navigation}) {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Home Screen</Text>
-      <Button title={"Go to details"} onPress={()=>navigation.navigate('DetailScreen')} />
-    </View>
-  );
-}
-function DetailScreen({navigation}) {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Details Screen</Text>
-    </View>
-  );
-}
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import HomeScreen from "./screens/home/home";
+import Gallery from "./screens/gallery/gallery";
+import Preview from "./screens/preview/preview";
 
 const Stack = createNativeStackNavigator();
 
 function App() {
+  const options1 = {
+    gestureEnabled: true,
+    animation: "slide_from_left"
+  }
+  const options2 = {
+    gestureEnabled: true,
+    animation: "slide_from_bottom"
+  }
+  const options3 = {
+    gestureEnabled: true,
+    animation: "fade"
+  }
   return (
-    <NavigationContainer>
+    <NavigationContainer >
       <Stack.Navigator>
-        <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="DetailScreen" component={DetailScreen} />
+        <Stack.Screen name="Home" component={HomeScreen} options={options1} />
+        <Stack.Screen name="Gallery" component={Gallery} options={options2} />
+        <Stack.Screen name="Preview" component={Preview} options={options3} />
       </Stack.Navigator>
     </NavigationContainer>
   );
