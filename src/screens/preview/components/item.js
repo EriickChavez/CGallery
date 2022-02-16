@@ -2,10 +2,12 @@ import React, {useEffect, useState} from 'react';
 import {View, SafeAreaView, Text, StyleSheet, Button, ImageBackground, ScrollView, Dimensions, Animated, Pressable} from 'react-native';
 import FastImage from 'react-native-fast-image';
 import Carousel from 'react-native-snap-carousel';
+import CText from "../../../components/CText";
+
 const Dim = Dimensions.get('window')
-
-
-export default Item = ({item}) => {
+import CButtonClose from "../../../components/CButtonClose";
+import Header from "../../../components/header";
+export default Item = ({item, navigation}) => {
     const [animation, setAnimation] = useState(new Animated.Value(1));
     const [typeAnimation, setTypeAnimation] = useState(true);
 
@@ -24,18 +26,22 @@ export default Item = ({item}) => {
         opacity: animation
     }
 
+    const goBack = () => {
+        navigation.goBack()
+    }
 
     return (
         <Pressable style={styles.button} onPress={startAnimation}>
+
             <ImageBackground
                 source={{uri: item.url}}
                 style={styles.button}
                 blurRadius={10}
             >
                 <Animated.View style={[animatedStyles]}>
-                    <FastImage source={require('../../assets/shadows/shadow_bottom.png')}
+                    <FastImage source={require('../../../assets/shadows/shadow_bottom.png')}
                         style={styles.contentDescription}>
-                        <Text numberOfLines={2} style={styles.textDescription}>{item.title}</Text>
+                        <CText numberOfLines={2} style={styles.textDescription}>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eligendi hic incidunt  </CText>
                     </FastImage>
                 </Animated.View>
                 <FastImage
@@ -43,15 +49,26 @@ export default Item = ({item}) => {
                     resizeMode={"contain"}
                     style={styles.image}
                 />
+
             </ImageBackground>
+            <Header Right={() => <View style={styles.buttonClose}>
+                <CButtonClose width={30} height={30} stroke={"#000"} onPress={goBack} />
+            </View>} />
+
         </Pressable>
     )
 }
+
 
 const styles = StyleSheet.create({
     button: {
         flex: 1,
         flexDirection: 'column-reverse',
+    },
+    buttonClose: {
+        position: 'absolute',
+        top: 0,
+        right: 10
     },
     contentDescription: {
         paddingBottom: 8,
@@ -61,10 +78,10 @@ const styles = StyleSheet.create({
     },
     textDescription: {
         marginTop: 8,
-         color: 'white'
+        color: 'white'
     },
-    image:{
-        width: '100%', 
+    image: {
+        width: '100%',
         height: '100%'
     }
 })

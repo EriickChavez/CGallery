@@ -2,6 +2,7 @@ import {useNavigation} from '@react-navigation/native';
 import React, {useEffect, useState} from 'react';
 import {View, SafeAreaView, Text, StyleSheet, Image, Dimensions, TouchableOpacity} from 'react-native';
 import FastImage from 'react-native-fast-image';
+import CText from "../../../components/CText";
 
 const GalleryItem = ({id = 1}) => {
     const navigation = useNavigation()
@@ -18,7 +19,7 @@ const GalleryItem = ({id = 1}) => {
                 style={styles.image}
             >
                 <View style={styles.contentText}>
-                    <Text numberOfLines={2} style={styles.textDescription}>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eligendi hic incidunt  </Text>
+                    <CText numberOfLines={2}>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eligendi hic incidunt</CText>
                 </View>
             </FastImage>
 
@@ -44,10 +45,7 @@ const styles = StyleSheet.create({
         paddingHorizontal: '3%',
         paddingVertical: '2%',
         backgroundColor: 'rgba(0,0,0,0.2)'
-    },
-    textDescription:{
-        color:'white'
-    }
+    }, 
 })
 
 export default GalleryItem;

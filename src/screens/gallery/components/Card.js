@@ -2,6 +2,8 @@ import React, {useEffect, useMemo, useState} from 'react';
 import {View, Image, Button, SafeAreaView, Text, StyleSheet, TouchableOpacity, ImageBackground} from 'react-native';
 
 import FastImage from 'react-native-fast-image';
+import CText from '../../../components/CText';
+
 
 export default Card = ({item, i, navigation, onPress = () => { }}) => {
     const randomBool = useMemo(() => i % 3 == 0, []);
@@ -21,7 +23,7 @@ export default Card = ({item, i, navigation, onPress = () => { }}) => {
                 >
                     <FastImage source={require('../../../assets/shadows/shadow_bottom.png')}
                         style={styles.image}>
-                        <Text numberOfLines={2} style={styles.textDescription}>{item.title}</Text>
+                        <CText numberOfLines={2} style={styles.textDescription}>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eligendi hic incidunt</CText>
                     </FastImage>
                 </FastImage>
             </TouchableOpacity>
