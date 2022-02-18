@@ -46,7 +46,6 @@ const Item = ({item, goBack = () => { }}) => {
 
     return (
         <GestureRecognizer
-            // onSwipe={(direction, state) => onSwipe(direction, state)}
             onSwipeUp={(state) => goBack()}
             onSwipeDown={(state) => goBack()}
             config={config}
@@ -74,9 +73,7 @@ const Item = ({item, goBack = () => { }}) => {
                     />
 
                 </ImageBackground>
-                <Header Right={() => <View style={styles.buttonClose}>
-                    <CButtonClose width={30} height={30} stroke={"#000"} onPress={goBack} />
-                </View>} />
+                
             </Pressable>
         </GestureRecognizer>
     )

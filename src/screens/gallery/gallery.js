@@ -23,7 +23,7 @@ export default Index = (props) => {
 
     return (
         <SafeAreaView style={[styles.safeArea, styles.flex1]}>
-            <Header Left={() => <CButtonBack onPress={Back} stroke={"#FF0000"} width={30} height={30} />} />
+            <Header name={"Gallery"} Left={() => <CButtonBack onPress={Back} stroke={"#FF0000"} width={30} height={30} />} />
             <View style={[styles.flex1, styles.container]}>
                 <MasonryList
                     data={data}

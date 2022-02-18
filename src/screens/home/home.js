@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
-import {View, Text, SafeAreaView, ScrollView, Button} from 'react-native';
-import HomeItem from "./components/homeItem";
+import {View, Text, SafeAreaView, ScrollView, Button, FlatList} from 'react-native';
+import HomeItem from "./components/homeItem2";
 import Header from "../../components/header";
 import {connect} from 'react-redux';
 import {homeItemStyles, homeScreenStyles} from "./styles/styles";
@@ -56,9 +56,7 @@ const HomeScreen = (props) => {
         if (props.albums.length == 0) {
             _fetch()
             fetchPhotos()
-            console.log("[fetch]");
         } else {
-            console.log("[no fetch]");
             setAlbumList(props.albums)
             setPhotosList(props.photos)
             setCover(filterCover(props.photos));
@@ -71,12 +69,14 @@ const HomeScreen = (props) => {
         navigation.navigate('Gallery', {id, data})
     }
 
-
     return (
         <SafeAreaView style={[homeScreenStyles.safeArea, homeScreenStyles.flex1]}>
             <View style={[homeScreenStyles.flex1, homeScreenStyles.container]}>
                 <Header />
-                <ScrollView style={{paddingHorizontal:'5%'}}>
+                <ScrollView
+                    style={{padding: '5%'}}
+                    contentContainerStyle={{justifyContent: 'space-between'}}
+                >
                     {albumList.map((e, i) => <HomeItem key={i} item={e} onPress={navigateToGallery} url={cover[e?.id]?.url ?? ""} />)}
                 </ScrollView>
             </View>

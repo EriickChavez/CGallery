@@ -3,7 +3,7 @@ import {Pressable} from 'react-native';
 import {View, StyleSheet} from 'react-native';
 import Svg, {Polyline} from "react-native-svg";
 
-const Cbuttonclose = (props) => {
+const CbuttonBack = (props) => {
     return (
         <Pressable onPress={() => props.onPress()}>
             <Svg
@@ -27,7 +27,7 @@ const Cbuttonclose = (props) => {
 
 const styles = StyleSheet.create({})
 
-export default Cbuttonclose;
+export default CbuttonBack;
 
 
 
