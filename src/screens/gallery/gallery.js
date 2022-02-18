@@ -10,13 +10,15 @@ import {useNavigation, useRoute} from '@react-navigation/native';
 export default Index = (props) => {
     const navigation = useNavigation()
     const route = useRoute()
-    const {id, data} = route.params;
-    const [list, setList] = useState(data ?? []);
 
+    const {data} = route.params;
+    
+    // Abre la pantalla preview
     const onPress = (id) => {
         navigation.navigate('Preview', {data, id})
     }
 
+    // Regresa a home
     const Back = () => {
         navigation.goBack()
     }

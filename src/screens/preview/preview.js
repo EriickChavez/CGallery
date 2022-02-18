@@ -6,6 +6,7 @@ const Dim = Dimensions.get('window')
 import Header from "../../components/header";
 import {useNavigation, useRoute} from '@react-navigation/native';
 import Cbuttonclose from '../../components/CButtonClose';
+
 export default Index = (props) => {
     const navigation = useNavigation()
     const route = useRoute()
@@ -20,27 +21,14 @@ export default Index = (props) => {
     return (
         <SafeAreaView style={[styles.safeArea, styles.flex1]}>
             <View style={styles.flex1}>
-                <Header
-                    name={"Preview"}
-                    Right={() => <View style={styles.buttonClose}>
-                        <Cbuttonclose width={30} height={30} stroke={"#F00"} onPress={goBack} />
-                    </View>}
-                />
                 <Carousel
-                    layout='default'
+                    data={data}
+                    contentContainerCustomStyle={[styles.container]}
                     firstItem={index}
-                    zoomScale={0.4}
-                    maximumZoomScale={3}
-                    minimumZoomScale={4}
-                    style={[styles.container]}
-                    contentContainerStyle={[styles.container, styles.flex1]}
-                    contentContainerCustomStyle={[styles.container,styles.flex1]}
+                    renderItem={({item}) =>  <Item item={item} goBack={goBack} /> }
                     sliderWidth={Dim.width}
                     itemWidth={Dim.width}
-                    data={data}
-                    bouncesZoom={true}
-                    renderItem={({item}) =>  <Item item={item} goBack={goBack} /> }
-                />
+                /> 
             </View>
         </SafeAreaView>
     );

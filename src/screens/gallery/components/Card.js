@@ -32,26 +32,10 @@ export default Card = ({item, i, navigation, onPress = () => { }}) => {
 };
 
 const styles = StyleSheet.create({
-    padding10: {
-        padding: 10
-    },
-    button: {
-        flex: 1,
-        marginTop: 12,
-        borderRadius: 20,
-    },
-    imageBackground: {
-        flexDirection: 'column-reverse',
-        borderRadius: 20
-    },
-    image: {
-        paddingBottom: 10,
-        paddingHorizontal: 9,
-        flexDirection: 'column-reverse',
-        height: 100
-    },
-    textDescription: {
-        color: 'white'
-    }
+    padding10: {padding: 10},
+    button: {flex: 1, marginTop: 12, borderRadius: 20, },
+    imageBackground: {flexDirection: 'column-reverse', borderRadius: 20, backgroundColor: "#FF0000"},
+    image: {paddingBottom: 10, paddingHorizontal: 9, flexDirection: 'column-reverse', height: 100},
+    textDescription: {color: 'white'}
 
 })
