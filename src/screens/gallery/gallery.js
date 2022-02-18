@@ -2,15 +2,19 @@ import React, {useEffect, useMemo, useState} from 'react';
 import {View, Image, Button, SafeAreaView, Text, StyleSheet, TouchableOpacity, ImageBackground} from 'react-native';
 import MasonryList from '@react-native-seoul/masonry-list';
 
-import filteredItems from "./data";
-import FastImage from 'react-native-fast-image';
 import Card from "./components/Card";
 import Header from '../../components/header';
 import CButtonBack from "../../components/CButtonBack";
+import {useNavigation, useRoute} from '@react-navigation/native';
 
-export default Index = ({navigation}) => {
+export default Index = (props) => {
+    const navigation = useNavigation()
+    const route = useRoute()
+    const {id, data} = route.params;
+    const [list, setList] = useState(data ?? []);
+
     const onPress = (id) => {
-        navigation.navigate('Preview', {data: filteredItems, id})
+        navigation.navigate('Preview', {data, id})
     }
 
     const Back = () => {
@@ -22,7 +26,7 @@ export default Index = ({navigation}) => {
             <Header Left={() => <CButtonBack onPress={Back} stroke={"#FF0000"} width={30} height={30} />} />
             <View style={[styles.flex1, styles.container]}>
                 <MasonryList
-                    data={filteredItems}
+                    data={data}
                     keyExtractor={(item, index) => index}
                     numColumns={2}
                     showsVerticalScrollIndicator={false}
@@ -39,5 +43,5 @@ export default Index = ({navigation}) => {
 const styles = StyleSheet.create({
     safeArea: {backgroundColor: '#FFFFFF'},
     flex1: {flex: 1},
-    container:{backgroundColor:"#D8DEE9"}
+    container: {backgroundColor: "#D8DEE9"}
 })

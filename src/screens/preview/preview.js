@@ -4,9 +4,17 @@ import Carousel from 'react-native-snap-carousel';
 import Item from "./components/item";
 const Dim = Dimensions.get('window')
 import Header from "../../components/header";
-export default Index = ({navigation, route}) => {
+import {useNavigation, useRoute} from '@react-navigation/native';
+export default Index = (props) => {
+    const navigation = useNavigation()
+    const route = useRoute()
+    
     const {data, id} = route.params;
     const [index, setIndex] = useState(data.findIndex(e => e.id == id));
+
+    const goBack = () => {
+        navigation.goBack()
+    }
 
     return (
         <SafeAreaView style={[styles.safeArea, styles.flex1]}>
@@ -24,7 +32,7 @@ export default Index = ({navigation, route}) => {
                     itemWidth={Dim.width}
                     data={data}
                     bouncesZoom={true}
-                    renderItem={({item}) => <Item item={item} navigation={navigation} />}
+                    renderItem={({item}) => <Item item={item} goBack={goBack} />}
                 />
             </View>
         </SafeAreaView>
